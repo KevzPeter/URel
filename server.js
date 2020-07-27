@@ -16,12 +16,16 @@ mongoose.connection.on('connected',()=>{
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
+const PORT = process.env.PORT || '27017'
+
+app.listen(PORT,()=>{console.log('Listening on port',PORT)});
+
 if(process.env.NODE_ENV==='production')
 {
  app.use(express.static(path.join(__dirname, './client/build')))
- app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
+  app.get('/',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,"client/build","index.html"))
+  })
 }
 
 app.post('/shortUrls', async (req, res) => {
@@ -54,6 +58,4 @@ app.get('/:shortUrl', async (req, res) => {
   shortUrl.save()
   res.redirect(shortUrl.full)
 })
-const PORT = process.env.PORT || '27017'
 
-app.listen(PORT,()=>{console.log('Listening on port',PORT)});

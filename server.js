@@ -6,15 +6,20 @@ const cors=require('cors')
 const bodyParser=require('body-parser')
 
 
-mongoose.connect('mongodb://localhost/urlShortener', {
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/urlShortener', {
   useNewUrlParser: true, useUnifiedTopology: true
 })
-
+mongoose.connection.on('connected',()=>{
+  console.log('Mongoose Connected Woohoo!')
+})
 
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
-
+if(process.env.NODE_ENV==='production')
+{
+ app.use(express.static(path.join(__dirname, './client/build')))
+}
 
 app.post('/shortUrls', async (req, res) => {
   

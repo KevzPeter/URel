@@ -4,7 +4,7 @@ const ShortUrl = require('./models/shortUrl')
 const app = express()
 const cors=require('cors')
 const bodyParser=require('body-parser')
-
+const path=require('path')
 
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/urlShortener', {
   useNewUrlParser: true, useUnifiedTopology: true

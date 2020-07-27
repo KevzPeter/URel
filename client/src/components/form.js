@@ -23,17 +23,17 @@ export class Form extends Component {
         var data = {
             fullUrl:this.state.fullurl,
         }   
-        axios.post('http://localhost:27017/shortUrls',data).then(res=>this.setState({shortUrl:res.data})).catch(e=>console.log(e))
+        axios.post('/shortUrls',data).then(res=>this.setState({shortUrl:res.data})).catch(e=>console.log(e))
         }
     }
     showResult=()=>{
         if (this.state.shortUrl){
         return(
             <div className="row justify-content-center py-2">
-            <h4 className="col-md-4">http://localhost:27017/{this.state.shortUrl}</h4>
+            <h4 className="col-md-4">https://urelapp.herokuapp.com/{this.state.shortUrl}</h4>
             <i className="col-md-2 fa fa-clone" aria-hidden="true" 
             onClick={() => {
-                navigator.clipboard.writeText('http://localhost:27017/'+this.state.shortUrl);
+                navigator.clipboard.writeText('https://urelapp.herokuapp.com/'+this.state.shortUrl);
                 this.setState({copied:"Copied!"})
                 }}> {this.state.copied}</i>
             </div>

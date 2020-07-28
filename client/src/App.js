@@ -13,7 +13,7 @@ function App() {
     <NavBar />
     <div className="row justify-content-center">
       <div className="col-md-3 text-center p-2"><Logo /></div>
-      <div className="col-md-6  text-center my-auto"><h1><strong>URel - A URL shortening service</strong></h1></div>
+      <div className="col-md-6  text-center my-auto" id="Intro"><h1><strong>URel - A URL shortening service</strong></h1></div>
     </div>
     <div className="App">
       <Form />

@@ -30,7 +30,7 @@ export class Form extends Component {
         if (this.state.shortUrl){
         return(
             <div className="row justify-content-center py-2">
-            <h4 className="col-md-4">https://urelapp.herokuapp.com/{this.state.shortUrl}</h4>
+            <h4 className="col-md-4">urelapp.herokuapp.com/{this.state.shortUrl}</h4>
             <i className="col-md-2 fa fa-clone" aria-hidden="true" 
             onClick={() => {
                 navigator.clipboard.writeText('https://urelapp.herokuapp.com/'+this.state.shortUrl);
